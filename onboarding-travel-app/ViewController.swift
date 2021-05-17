@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
     ]
     
-    private let currentPage: Int = 0
+    private var currentPage: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,9 +69,7 @@ class ViewController: UIViewController {
             self.titleLabel.alpha = 0.8
             self.titleLabel.transform = CGAffineTransform(translationX: -30, y: 0)
             
-            
         } completion: { _ in
-            
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 
@@ -79,6 +77,31 @@ class ViewController: UIViewController {
                 self.titleLabel.transform = CGAffineTransform(translationX: -30, y: -550)
                 
             }, completion: nil)
+            
+            // Second Animation Detail LAbel
+            
+            UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut) {
+                self.detailLabel.alpha = 0.8
+                self.detailLabel.transform = CGAffineTransform(translationX: -30, y: 0)
+                
+            } completion: { _ in
+                
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                    
+                    self.detailLabel.alpha = 0
+                    self.detailLabel.transform = CGAffineTransform(translationX: 0, y: -550)
+                    
+                }) { _ in
+                    print("done")
+                    
+                    self.currentPage += 1
+                    self.titleLabel.alpha = 1.0
+                    self.detailLabel.alpha = 1.0
+                    self.titleLabel.transform = .identity
+                    self.detailLabel.transform = .identity
+                    self.setupScreen(index: self.currentPage)
+                    
+                }
             
             
             
@@ -90,3 +113,4 @@ class ViewController: UIViewController {
 }
 
 
+}
