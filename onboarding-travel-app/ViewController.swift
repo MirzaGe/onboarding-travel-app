@@ -15,7 +15,7 @@ struct OnboardingItem {
 }
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var darkView: UIView!
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -46,11 +46,11 @@ class ViewController: UIViewController {
         setupScreen(index: currentPage)
         setupGestures()
     }
-
+    
     private func setupPageControl() {
         pageControl.numberOfPages = items.count
     }
-
+    
     private func setupScreen(index: Int) {
         titleLabel.text = items[index].title
         detailLabel.text = items[index].detail
@@ -60,10 +60,33 @@ class ViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapAnimation))
         view.addGestureRecognizer(tapGesture)
     }
-     
+    
     @objc private func handleTapAnimation() {
-        print("Tapped!")
+        
+        // first animation = title label
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut) {
+            self.titleLabel.alpha = 0.8
+            self.titleLabel.transform = CGAffineTransform(translationX: -30, y: 0)
+            
+            
+        } completion: { _ in
+            
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                
+                self.titleLabel.alpha = 0
+                self.titleLabel.transform = CGAffineTransform(translationX: -30, y: -550)
+                
+            }, completion: nil)
+            
+            
+            
+        }
+        
+        
     }
     
 }
+
 
