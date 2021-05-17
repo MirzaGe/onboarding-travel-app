@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  onboarding-travel-app
-//
-//  Created by sherry on 17/05/2021.
-// /
-
 import UIKit
 
 
@@ -38,7 +31,7 @@ class ViewController: UIViewController {
         
     ]
     
-    private var currentPage: Int = 0
+    private let currentPage: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,54 +56,17 @@ class ViewController: UIViewController {
     
     @objc private func handleTapAnimation() {
         
-        // first animation = title label
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations:{
+            
             self.titleLabel.alpha = 0.8
             self.titleLabel.transform = CGAffineTransform(translationX: -30, y: 0)
             
-        } completion: { _ in
-            
+        }) { _ in
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 
                 self.titleLabel.alpha = 0
-                self.titleLabel.transform = CGAffineTransform(translationX: -30, y: -550)
-                
+                self.titleLabel.transform = CGAffineTransform(translationX: 0, y: -550)
             }, completion: nil)
-            
-            // Second Animation Detail LAbel
-            
-            UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut) {
-                self.detailLabel.alpha = 0.8
-                self.detailLabel.transform = CGAffineTransform(translationX: -30, y: 0)
-                
-            } completion: { _ in
-                
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-                    
-                    self.detailLabel.alpha = 0
-                    self.detailLabel.transform = CGAffineTransform(translationX: 0, y: -550)
-                    
-                }) { _ in
-                    print("done")
-                    
-                    self.currentPage += 1
-                    self.titleLabel.alpha = 1.0
-                    self.detailLabel.alpha = 1.0
-                    self.titleLabel.transform = .identity
-                    self.detailLabel.transform = .identity
-                    self.setupScreen(index: self.currentPage)
-                    
-                }
-            
-            
-            
         }
-        
-        
     }
-    
-}
-
-
 }
