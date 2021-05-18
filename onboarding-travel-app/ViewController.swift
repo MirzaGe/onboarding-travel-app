@@ -48,6 +48,10 @@ class ViewController: UIViewController {
         titleLabel.text = items[index].title
         detailLabel.text = items[index].detail
         pageControl.currentPage = index
+        titleLabel.alpha = 1.0
+        detailLabel.alpha = 1.0
+        titleLabel.transform = .identity
+        detailLabel.transform = .identity
     }
     private func setupGestures(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapAnimation))
@@ -78,22 +82,25 @@ class ViewController: UIViewController {
                 self.detailLabel.transform = CGAffineTransform(translationX: 0, y: -5500)
             }) { _ in
                 
-                print ("done")
                 self.currentPage += 1
-                self.titleLabel.alpha = 1.0
-                self.detailLabel.alpha = 1.0
-                self.titleLabel.transform = .identity
-                self.detailLabel.transform = .identity
-                self.setupScreen(index: self.currentPage)
                 
                 
-                
+                if self.isOverLastItems(){
+                    // show the main part of the app
+                    print ("Show the main app")
+                } else {
+                    self.setupScreen(index: self.currentPage)
+                }
                 
             }
-                            
-                            
-                            
                         }
-        
     }
+    
+    private func isOverLastItems() -> Bool {
+        // 0,1,2,3 // index
+        // count => 4
+        return currentPage == self.items.count
+    }
+    
+    
 }
