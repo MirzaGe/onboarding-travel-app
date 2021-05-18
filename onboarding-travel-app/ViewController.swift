@@ -67,11 +67,23 @@ class ViewController: UIViewController {
         }
         
         
-        UIView.animate(withDuration: <#T##TimeInterval#>, delay: <#T##TimeInterval#>, usingSpringWithDamping: <#T##CGFloat#>, initialSpringVelocity: <#T##CGFloat#>, options: <#T##UIView.AnimationOptions#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
-        
-        
-        
-        
+        UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations:
+                        {
+                            self.detailLabel.alpha = 0.8
+                            self.detailLabel.transform = CGAffineTransform(translationX: -30, y: 0)
+                        }) { _ in
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                self.detailLabel.alpha = 0
+                self.detailLabel.transform = CGAffineTransform(translationX: 0, y: -5500)
+            }) { _ in
+                
+                print ("done")
+            }
+                            
+                            
+                            
+                        }
         
     }
 }
