@@ -56,17 +56,22 @@ class ViewController: UIViewController {
     
     @objc private func handleTapAnimation() {
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations:{
-            
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations : {
             self.titleLabel.alpha = 0.8
-            self.titleLabel.transform = CGAffineTransform(translationX: -30, y: 0)
-            
-        }) { _ in
+            self.titleLabel.transform = CGAffineTransform(translationX: -30, y:0)
+        }) { _  in
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-                
                 self.titleLabel.alpha = 0
-                self.titleLabel.transform = CGAffineTransform(translationX: 0, y: -550)
+                self.titleLabel.transform = CGAffineTransform(translationX: 0, y: -5500)
             }, completion: nil)
         }
+        
+        
+        UIView.animate(withDuration: <#T##TimeInterval#>, delay: <#T##TimeInterval#>, usingSpringWithDamping: <#T##CGFloat#>, initialSpringVelocity: <#T##CGFloat#>, options: <#T##UIView.AnimationOptions#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+        
+        
+        
+        
+        
     }
 }
