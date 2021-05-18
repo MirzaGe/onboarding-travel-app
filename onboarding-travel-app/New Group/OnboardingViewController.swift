@@ -1,13 +1,6 @@
 import UIKit
 
-
-struct OnboardingItem {
-    let title: String
-    let detail: String
-    let bgImage : UIImage?
-}
-
-class ViewController: UIViewController {
+class OnboardingViewController: UIViewController {
     
     @IBOutlet weak var darkView: UIView!
     @IBOutlet weak var bgImageView: UIImageView!
@@ -15,33 +8,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    private let items: [OnboardingItem] = [
-        .init(title: "Travel Your Way",
-              detail: "Travel the world by air, rail or sea at the most competitive prices",
-              bgImage: UIImage(named: "imTravel1")),
-        .init(title: "Stay Your Way",
-              detail: "With Over Millions Of Hotels worldwide, find the perfect accomodation in the most amazing places!",
-              bgImage: UIImage(named: "imTravel2")),
-        .init(title: "Discover Your Way With New Features",
-              detail: "Explore exotic destinations with our new features that link you to like-minded travellers!",
-              bgImage: UIImage(named: "imTravel3")),
-        .init(title: "Feast Your Way",
-              detail: "We recommend you local cuisines that are safe and highly recommended by the locals!",
-              bgImage: UIImage(named: "imTravel7"))
-        
-    ]
+    private var items: [OnboardingItem] = []
     
     private var currentPage: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPlaceholderitems()
         setupPageControl()
         setupScreen(index: currentPage)
         updateBackgroundImage(index: currentPage)
         setupGestures()
         setupViews()
-        
-        
+    }
+    
+    private func setupPlaceholderitems() {
+        items = OnboardingItem.placholderItems
     }
     
     private func setupViews() {
