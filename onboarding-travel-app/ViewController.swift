@@ -88,6 +88,7 @@ class ViewController: UIViewController {
                 if self.isOverLastItems(){
                     // show the main part of the app
                     print ("Show the main app")
+                    self.showMainapp()
                 } else {
                     self.setupScreen(index: self.currentPage)
                 }
@@ -100,6 +101,20 @@ class ViewController: UIViewController {
         // 0,1,2,3 // index
         // count => 4
         return currentPage == self.items.count
+    }
+    
+    private func showMainapp() {
+        
+        // MainAppViewController
+        
+        let mainAppViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainAppViewController")
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            window.rootViewController = mainAppViewController
+        }
+        
     }
     
     
