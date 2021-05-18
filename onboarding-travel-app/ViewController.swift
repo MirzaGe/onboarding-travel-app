@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         
     ]
     
-    private let currentPage: Int = 0
+    private var currentPage: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +79,16 @@ class ViewController: UIViewController {
             }) { _ in
                 
                 print ("done")
+                self.currentPage += 1
+                self.titleLabel.alpha = 1.0
+                self.detailLabel.alpha = 1.0
+                self.titleLabel.transform = .identity
+                self.detailLabel.transform = .identity
+                self.setupScreen(index: self.currentPage)
+                
+                
+                
+                
             }
                             
                             
