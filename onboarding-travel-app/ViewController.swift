@@ -27,7 +27,7 @@ class ViewController: UIViewController {
               bgImage: UIImage(named: "imTravel3")),
         .init(title: "Feast Your Way",
               detail: "We recommend you local cuisines that are safe and highly recommended by the locals!",
-              bgImage: UIImage(named: "imTravel4"))
+              bgImage: UIImage(named: "imTravel7"))
         
     ]
     
