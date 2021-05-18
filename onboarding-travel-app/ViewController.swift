@@ -87,7 +87,7 @@ class ViewController: UIViewController {
                 
                 if self.isOverLastItems(){
                     // show the main part of the app
-                    print ("Show the main app")
+                    
                     self.showMainapp()
                 } else {
                     self.setupScreen(index: self.currentPage)
